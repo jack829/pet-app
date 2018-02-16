@@ -24,11 +24,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        { this.state.showPets ?
+        {this.state.showPets ?
           this.state.pets.map((pet, index) => {
             return <Pet key={pet.id} info={pet} onNameChange={this.onNameChange.bind(this, index)} />
           })
-        : <h1>Pets Hidden</h1> }
+          : <h1>Pets Hidden</h1>}
       </div>
     );
   }
