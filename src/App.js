@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import uuidv1 from 'uuid/v1';
-import './App.css';
+import classes from './App.css';
 import Pet from './Components/Pet';
 
 class App extends Component {
@@ -23,7 +23,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className={classes.App}>
         {this.state.showPets ?
           this.state.pets.map((pet, index) => {
             return <Pet key={pet.id} info={pet} onNameChange={this.onNameChange.bind(this, index)} />
