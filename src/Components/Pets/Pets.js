@@ -9,6 +9,7 @@ const pets = (props) => {
         return <Pet
                   key={pet.id}
                   info={pet}
+                  isFirst={index === 0}
                   changeInput={props.changeInput.bind(this, index)}
                   clickDelete={props.clickDelete.bind(this, index)}
                 />
