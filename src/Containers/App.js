@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
 import uuidv1 from 'uuid/v1';
+import withClass from '../hoc/withClass';
+import Aux from '../hoc/Aux';
 import classes from './App.css';
 import Cockpit from '../Components/Cockpit/Cockpit';
 import Pets from '../Components/Pets/Pets';
@@ -35,7 +37,7 @@ class App extends PureComponent {
 
   render() {
     return (
-      <div className={classes.App}>
+      <Aux>
         <Cockpit clicked={this.onToggleHiddenHandler.bind(this)} />
         {this.state.showPets ?
           <Pets
@@ -44,9 +46,9 @@ class App extends PureComponent {
             clickDelete={this.onDeleteHandler.bind(this)}
           />
           : <h1>Pets Hidden</h1>}
-      </div>
+      </Aux>
     );
   }
 }
 
-export default App;
+export default withClass(App, classes.App);
