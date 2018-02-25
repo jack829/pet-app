@@ -13,7 +13,8 @@ class App extends PureComponent {
       { id: uuidv1(), name: 'Molly', age: 16 },
       { id: uuidv1(), name: 'Lyla', age: 5 }
     ],
-    showPets: true
+    showPets: true,
+    numToggleClicked: 0
   }
 
   onNameChangeHandler(index, event) {
@@ -24,9 +25,15 @@ class App extends PureComponent {
     });
   }
 
-  onToggleHiddenHandler() {
-    const petsShown = this.state.showPets;
-    this.setState({ showPets: !petsShown });
+  onToggleClicked() {
+    // Do not reference this.state directly inside of the setState method as it is asynchronous so the
+    //   status of this.state at the time of its execution is not reliable
+    this.setState((prevState, props) => {
+      return {
+        showPets: !prevState.showPets,
+        numToggleClicked: prevState.numToggleClicked + 1
+      }
+    });
   }
 
   onDeleteHandler(index) {
@@ -38,7 +45,7 @@ class App extends PureComponent {
   render() {
     return (
       <Aux>
-        <Cockpit clicked={this.onToggleHiddenHandler.bind(this)} />
+        <Cockpit clicked={this.onToggleClicked.bind(this)} />
         {this.state.showPets ?
           <Pets
             pets={this.state.pets}
