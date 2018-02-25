@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import withClass from '../../../hoc/withClass';
 import Aux from '../../../hoc/Aux';
 import classes from './Pet.css';
@@ -28,6 +29,12 @@ class Pet extends Component {
       </Aux>
     )
   }
+}
+
+Pet.propTypes = {
+  name: PropTypes.string,
+  age: PropTypes.number,
+  clickDelete: PropTypes.func
 }
 
 export default withClass(Pet, classes.Pet);
